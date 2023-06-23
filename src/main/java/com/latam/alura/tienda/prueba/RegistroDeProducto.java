@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 
 import com.latam.alura.tienda.dao.ProductoDao;
 import com.latam.alura.tienda.modelo.Producto;
+import com.latam.alura.tienda.utils.JPAUtils;
 
 public class RegistroDeProducto {
 
@@ -17,12 +18,8 @@ public class RegistroDeProducto {
 		celular.setNombre("Samsung");
 		celular.setDescripcion("Teléfono usado");
 		celular.setPrecio(new BigDecimal("1000"));
-
-		// EntityManager is who are going to do the SQL commands
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("tienda");
-		// This is an interface
-		EntityManager em = factory.createEntityManager();
-		// First of all, we need to tell to EntityManager that transactions are going to begin
+	
+		EntityManager em = JPAUtils.getEntityManager();
 		ProductoDao productoDao = new ProductoDao(em);
 		
 		em.getTransaction().begin();
