@@ -20,14 +20,13 @@ public class RegistroDeProducto {
 		Producto producto = productoDao.consultaPorId(1l);
 		System.out.println(producto.getNombre());
 		
-		List<Producto> productos = productoDao.consultarTodos();
-		productos.forEach(prod -> System.out.println(prod.getDescripcion()));
-
+		BigDecimal precio = productoDao.consultarPrecioPorNombreDeProducto("Samsung");
+		System.out.println(precio);
 	}
 
 	private static void registrarProducto() {
 		Categoria celulares = new Categoria("CELULAR");
-		Producto celular = new Producto("Samsung","Teléfono usado",new BigDecimal("1000"),celulares);
+		Producto celular = new Producto("Samsung","Teléfono completamente nuevo",new BigDecimal("1000"),celulares);
 
 		EntityManager em = JPAUtils.getEntityManager();
 
