@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.latam.alura.tienda.dao.ProductoDao;
 import com.latam.alura.tienda.modelo.Producto;
 
 public class RegistroDeProducto {
@@ -22,9 +23,14 @@ public class RegistroDeProducto {
 		// This is an interface
 		EntityManager em = factory.createEntityManager();
 		// First of all, we need to tell to EntityManager that transactions are going to begin
+		ProductoDao productoDao = new ProductoDao(em);
+		
 		em.getTransaction().begin();
-		em.persist(celular);
+		
+		productoDao.guardar(celular);
+		
 		em.getTransaction().commit(); // This send the values to the DB
+		
 		em.clear();
 	}
 
