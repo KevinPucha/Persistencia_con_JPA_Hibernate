@@ -5,14 +5,20 @@
 			 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 		http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
 		version="2.2">
-		
+	
 	<persistence-unit name="tienda" transaction-type="RESOURCE_LOCAL">
+	
+		<!-- Here we indicate the mappings of the entities that are going to be in the DB, with Hibernate this is not necessary-->
+		<!-- <class>com.latam.alura.tienda.Producto</class> -->
+	
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>	
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:tienda"/>
 			<property name="javax.persistence.jdbc.user" value="sa"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
 					
+			<property name="hibernate.show_sql" value="true"/> <!-- This allows us to see in console the SQL command -->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>		
 					
 		</properties>
