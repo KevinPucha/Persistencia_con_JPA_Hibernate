@@ -5,11 +5,10 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,8 +23,9 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private BigDecimal precio;
+	@SuppressWarnings("unused")
 	private LocalDate fechaDeRegistro = LocalDate.now();
-	@Enumerated(EnumType.STRING) // Makes to index the elements of category by itself name
+	@ManyToOne
 	private Categoria categoria;
 	
 	public Producto () {
